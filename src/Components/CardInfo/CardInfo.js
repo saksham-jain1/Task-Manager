@@ -167,7 +167,7 @@ const CardInfo = ({ onClose, card,updateCard,boardId,completed }) => {
               />
             </div>
             <div>
-              {(values?.tasks?.length>0 ? ((completed * 100) / values?.tasks?.length) : "0")}%
+              {(values?.tasks?.length>0 ? ((completed * 100) / values?.tasks?.length) + "%" : "")}
             </div>
           </div>
           <div className="cardinfo_box_list">
