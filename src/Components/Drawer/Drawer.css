@@ -1,0 +1,87 @@
+.drawer_outer{
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    position: absolute;
+    top:0;
+    left:0;
+}
+.drawer_body{
+    height: 100vh;
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 400px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.drawer_body_top{
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 27px;
+}
+
+.drawer_body_top svg{
+    top: 17px;
+    right: 25px;
+    height: 28px;
+    width: 28px;
+    cursor: pointer;
+}
+
+.drawer_body_search-box{
+    display: flex;
+    gap: 10px;
+    height: 6vh;
+    justify-content: center;
+    width: 100%;
+}
+
+.drawer_body_search-box input{
+    width: 70%;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid #1379ec;
+    font-size: 1rem;
+    padding: 10px;
+}
+
+.drawer_body_search-box button{
+    outline: none;
+    border: none;
+    color: #fff;
+    background-color: #1379ec;
+    transition: 400ms;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+}
+
+.drawer_body_search-box button:hover{
+    background-color: #0765d1;
+}
+.drawer_body_search-box button:active{
+    transform: translateY(3px);
+}
+
+.drawer_body_images{
+    height: 86vh;
+    overflow: auto;
+}
+
+
+.drawer_body_images img{
+    width: 180px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 7px;
+    margin: 5px 8px;
+    cursor: pointer;
+}
