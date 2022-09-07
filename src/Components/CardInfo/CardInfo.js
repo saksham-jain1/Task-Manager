@@ -137,6 +137,13 @@ const CardInfo = ({ onClose, card,updateCard,boardId,completed }) => {
                 onClick={() => setActiveColor(item)}
               />
             ))}
+            <input
+            type="color"
+            value={activeColor}
+            onChange={(e) => {
+              setActiveColor(e.target.value);
+            }}
+            />
           </div>
           <div className="cardinfo_box_body">
             <Editable
