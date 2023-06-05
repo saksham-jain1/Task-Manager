@@ -1,0 +1,217 @@
+.drawer_outer{
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    position: absolute;
+    top:0;
+    left:0;
+    overflow: hidden;
+    z-index: 2;
+}
+.drawer_body{
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 360px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -1px 0 20px rgba(0, 0, 0, 0.692);
+}
+
+.drawer_body_accordion {
+  cursor: pointer;
+  padding: 18px;
+  border: none;
+  text-align: left;
+  font-size: 15px;
+  transition: 0.4s;
+  display: flex;
+  justify-content: space-between;
+}
+
+.drawer_body_accordion, .drawer_body_accordion:hover {
+  background-color: rgb(219, 219, 219); 
+}
+
+.drawer_body_top{
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 27px;
+}
+
+.drawer_body_top svg{
+    top: 17px;
+    right: 25px;
+    height: 28px;
+    width: 28px;
+    cursor: pointer;
+}
+
+.drawer_body_search-box{
+    display: flex;
+    gap: 10px;
+    height: 6vh;
+    justify-content: center;
+    width: 100%;
+    margin: 10px 0px;
+}
+
+.drawer_body_search-box input,.drawer_body_rename input,.drawer_body_share input,.drawer_body_share select{
+    width: 70%;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid #1379ec;
+    font-size: 1rem;
+    padding: 10px;
+}
+
+.drawer_body_search-box button{
+    outline: none;
+    border: none;
+    color: #fff;
+    background-color: #1379ec;
+    transition: 400ms;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+}
+
+.drawer_body_search-box button:hover,.drawer_body_rename button:hover,.drawer_body_share button:hover{
+    background-color: #0765d1;
+}
+.drawer_body_search-box button:active,.drawer_body_rename button:active,.drawer_body_share button:active{
+    transform: translateY(3px);
+}
+
+.drawer_body_images{
+    height: 58vh;
+    overflow: auto;
+}
+
+
+.drawer_body_images img{
+    width: 160px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 7px;
+    margin: 5px 8px;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+.loader {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: spin 2s linear infinite;
+  align-self: center;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.badges{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+.badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: red;
+    width: max-content;
+    border-radius: 15px;
+    padding: 2px 7px;
+    gap: 5px;
+}
+.badge >svg {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+.list{
+display: flex;
+flex-direction: column;
+gap: 5px;
+padding-right: 20px;
+}
+.list-item{
+    display: flex;
+    background: #E8E8E8;
+    flex-direction: column;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-right: 7px;
+}
+.list-item:hover{
+    background: #38B2AC;
+    color: white;
+}
+.drawer_body_pages{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+.drawer_body_page{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 4px 12px;
+    cursor: pointer;
+    border-bottom: 3px solid black;
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+    color: #000;
+}
+.drawer_body_page p {
+    font-size: 20px;
+    flex: 1;
+    padding: 8px;
+}
+
+.drawer_body_pages .active,.drawer_body_page:hover{
+    background: rgb(119, 237, 119);
+}
+
+.drawer_body_page_controls{
+    display: flex;
+    gap: 15px;
+}
+
+.drawer_body_rename,.drawer_body_share{
+    width: 100%;
+    margin: 15px;
+}
+
+.drawer_body_rename input,.drawer_body_share input,.drawer_body_share select{
+    width: 90%;
+    margin: 7px 5px;
+}
+.drawer_body_rename button,.drawer_body_share button{
+    outline: none;
+    border: none;
+    color: #fff;
+    background-color: #1379ec;
+    transition: 400ms;
+    margin-top: 10px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+}

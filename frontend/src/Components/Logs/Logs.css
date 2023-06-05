@@ -1,0 +1,37 @@
+.logs{
+    position: absolute;
+    bottom: 30px;
+    right: 5px;
+    height: 350px;
+    width: 230px;
+    background: #fff;
+}
+.header{
+    position: relative;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header>svg{
+    cursor: pointer;
+}
+.body{
+    height: 310px;
+    padding: 10px;
+    overflow: auto;
+}
+.body>span{
+    border-bottom: .5px solid rgb(175, 175, 175);
+    display: flex;
+    position: relative;
+    font-size: 1.1rem;
+    padding-bottom: 12px;
+}
+.body>span>span{
+    position: absolute;
+    font-size: .7rem;
+    align-self: end;
+    right: 0px;
+    bottom: 0;
+}
