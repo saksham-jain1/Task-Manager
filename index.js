@@ -5,6 +5,7 @@ const pageRoutes = require("./backend/routes/pageRoutes");
 const cardRoutes = require("./backend/routes/cardRoutes");
 const boardRoutes = require("./backend/routes/boardRoutes");
 const connectDB = require("./backend/config/db");
+const path = require("path");
 
 dotenv.config();
 
