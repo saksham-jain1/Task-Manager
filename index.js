@@ -12,13 +12,22 @@ connectDB();
 const app = express();
 app.use(express.json());
 
-app.use("/api/users",userRoutes);
-app.use("/api/page",pageRoutes);
-app.use("/api/card",cardRoutes);
-app.use("/api/board",boardRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/page", pageRoutes);
+app.use("/api/card", cardRoutes);
+app.use("/api/board", boardRoutes);
 
-
-
+const __dirname1 = path.resolve();
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname1, "/frontend/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is Running Successfully");
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 
@@ -41,12 +50,12 @@ const server = app.listen(
 //     socket.join(userData._id);
 //     socket.emit("connected");
 //   });
-// 
+//
 //   socket.on("join chat", (room) => {
 //     socket.join(room);
 //     console.log("user joined room: " + room);
 //   });
-// 
+//
 //   socket.off("setup", () => {
 //     console.log("User Disconnected");
 //     socket.leave(userData._id);
