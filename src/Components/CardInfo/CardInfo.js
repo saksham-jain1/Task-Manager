@@ -14,14 +14,14 @@ import Modal from "../Modal/Modal";
 import "./CardInfo.css";
 
 const CardInfo = ({ onClose, card, updateCard, boardId, completed }) => {
-  const [activeColor, setActiveColor] = useState("");
+  const [activeColor, setActiveColor] = useState("#000000");
   const colors = [
-    "#a8193d",
-    "#4fcc25",
-    "#1ebffa",
-    "#8da377",
-    "#9975bd",
-    "#240959",
+    '#a8193d',
+    '#4fcc25',
+    '#1ebffa',
+    '#8da377',
+    '#9975bd',
+    '#240959',
   ];
 
   const [values, setValues] = useState({ ...card });
@@ -72,9 +72,9 @@ const CardInfo = ({ onClose, card, updateCard, boardId, completed }) => {
   return (
     <Modal onClose={() => onClose()}>
       <div className="cardinfo">
-        <span className="cardinfo_close_btn" onClick={() => onClose()}>
-          <X />
-        </span>
+        <div className="cardinfo_close">
+          <X onClick={() => onClose()} />
+        </div>
         <div className="cardinfo_box">
           <div className="cardinfo_box_title">
             <Type />
@@ -185,7 +185,11 @@ const CardInfo = ({ onClose, card, updateCard, boardId, completed }) => {
             </div>
             <div>
               {values?.tasks?.length > 0
-                ? (completed * 100) / values?.tasks?.length + "%"
+                ? Math.round(
+                    ((completed * 100) / values?.tasks?.length) * 100
+                  ) /
+                    100 +
+                  "%"
                 : ""}
             </div>
           </div>

@@ -8,6 +8,15 @@
     max-width: 100%;
     position: relative;
 }
+.cardinfo_close{
+    position: absolute;
+    right: 15px;
+    top: 20px;
+}
+.cardinfo_close svg{
+    height: 30px;
+    width: 30px;
+}
 
 .cardinfo_box{
     display: flex;
@@ -20,13 +29,6 @@
     font-size: 1.3rem;
     display: flex;
     gap: 10px;
-}
-
-.cardinfo_close_btn{
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    cursor: pointer;
 }
 
 .cardinfo_box_body{
@@ -71,8 +73,8 @@
     content: "+";
     z-index: 17;
     position: absolute;
-    top: -6px;
-    left: 3px;
+    top: -22%;
+    left: 11%;
     font-size: 2.2rem;
     color: rgb(250, 250, 250);
 }

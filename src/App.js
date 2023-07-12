@@ -17,7 +17,7 @@ function App() {
     'url("https://source.unsplash.com/1600x900/?office")'
   );
 
-  const addCard = (title, bid) => {
+  const addCard = async (title, bid) => {
     const card = {
       id: Date.now() + Math.random(),
       title,
@@ -29,11 +29,12 @@ function App() {
     const index = boards.findIndex((item) => item.id === bid);
     if (index < 0) return;
     const tempBoards = [...boards];
-    tempBoards[index].cards.push(card);
+    tempBoards[index].cards.push({ ...card});
     setBoards(tempBoards);
   };
 
   const removeCard = (cid, bid) => {
+    console.log(bid,cid)
     const bIndex = boards.findIndex((item) => item.id === bid);
     if (bIndex < 0) return;
     const cIndex = boards[bIndex].cards.findIndex((item) => item.id === cid);
@@ -87,7 +88,7 @@ function App() {
     setBoards(tempBoards);
   };
 
-  const updateCard = (cid, bid, card) => {
+  const updateCard = async (cid, bid, card) => {
     const bIndex = boards.findIndex((item) => item.id === bid);
     if (bIndex < 0) return;
 

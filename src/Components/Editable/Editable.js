@@ -10,6 +10,7 @@ const Editable = ({
   editClass,
   displayClass,
   boardId,
+  board_Id,
   handleDragEnd,
   handleDragEnter,
   type,
@@ -19,8 +20,8 @@ const Editable = ({
   return (
     <div
       className="editable"
-      onDragEnd={() => handleDragEnd("", boardId)}
-      onDragEnter={() => handleDragEnter("", boardId)}
+      onDragEnd={() => handleDragEnd("", boardId,board_Id)}
+      onDragEnter={() => handleDragEnter("", boardId,board_Id)}
     >
       {showEdit ? (
         <form

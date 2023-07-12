@@ -81,7 +81,7 @@ const Chatbot = () => {
         setMessages([
           ...chatMessages,
           {
-            content: error.message || "Error Occured",
+            content: "Error Occured",
             role: "error",
           },
         ]);

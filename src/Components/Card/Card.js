@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { CheckSquare, Clock, MoreHorizontal } from "react-feather";
+import {
+  AlertTriangle,
+  CheckSquare,
+  Clock,
+  MoreHorizontal,
+} from "react-feather";
 import CardInfo from "../CardInfo/CardInfo";
 import Chip from "../Chip/Chip";
 import Dropdown from "../Dropdown/Dropdown";
@@ -16,7 +21,7 @@ const Card = ({
   const [showDropdown, setShowDropdown] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const completed = card?.tasks?.filter((item) => item.completed)?.length;
-
+  const date=new Date();
   return (
     <>
       {showModal && (
@@ -55,7 +60,7 @@ const Card = ({
                 onClose={() => setShowDropdown(false)}
               >
                 <div className="card_dropdown">
-                  <p onClick={() => removeCard(card.id, boardId)}>
+                  <p onClick={() => removeCard(card.id,boardId)}>
                     Delete Card
                   </p>
                 </div>
@@ -71,11 +76,23 @@ const Card = ({
               {card?.date}
             </p>
           )}
-          {card?.tasks?.length>0 && <p>
-            <CheckSquare />
-            {`${completed}/${card?.tasks?.length}`}
-          </p>}
+          {card?.tasks?.length > 0 && (
+            <p>
+              <CheckSquare />
+              {`${completed}/${card?.tasks?.length}`}
+            </p>
+          )}
         </div>
+        {card.date && date.toISOString().substring(0, 10) > card.date ? (
+          <div className="card_delayed">
+            <p>
+              <AlertTriangle />
+              Delayed
+            </p>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );
