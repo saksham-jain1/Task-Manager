@@ -5,7 +5,7 @@ import Lottie from "lottie-react";
 import "./Chatbot.css";
 import { X } from "react-feather";
 
-const API_KEY = "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";
+const API_KEY = "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";
 const systemMessage = {
   role: "system",
   content:

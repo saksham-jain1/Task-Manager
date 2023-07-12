@@ -4,6 +4,8 @@ import Board from "./Components/Board/Board";
 import Drawer from "./Components/Drawer/Drawer";
 import Editable from "./Components/Editable/Editable";
 import Chatbot from "./Components/Chatbot/Chatbot";
+import todoimg from "./resources/todo.gif";
+import checkListimg from "./resources/checklist.gif";
 
 function App() {
   const [boards, setBoards] = useState(
@@ -108,7 +110,129 @@ function App() {
     <>
       {visible ? (
         <div className="index">
-          <button class="start" onClick={() => setVisible(false)}>Get Started</button>
+          <h1>About the Kanban App</h1>
+          <div className="top">
+            <button
+              className="start"
+              style={{ marginLeft: "auto", marginRight: "40px" }}
+              onClick={() => setVisible(false)}
+            >
+              Get Started
+            </button>
+          </div>
+          <div className="body">
+            <div className="body_text">
+              The Kanban App is a Trello clonedesigned to help individuals and
+              teams manage their tasks and projects more efficiently. Inspired
+              by the popular Kanban method, this app provides an intuitive and
+              visual interface that allows users to organize their work into
+              boards, lists, and cards.
+              <br />
+              <br />
+              <h2>Key Features:</h2>
+              <br />
+              <ol type="1">
+                <li>
+                  Boards, Lists, and Cards: Create multiple boards to represent
+                  different projects or categories. Within each board, you can
+                  create lists to represent different stages or phases of your
+                  project. Add cards to each list to represent specific tasks or
+                  items.
+                </li>
+                <li>
+                  Drag-and-Drop Interface: Easily move cards between lists and
+                  boards using a simple drag-and-drop interface. This feature
+                  allows you to quickly update the status of your tasks and keep
+                  track of their progress.{" "}
+                </li>
+                <li>
+                  Customizable Boards: Personalize your boards with custom
+                  backgrounds. Choose from a selection of preset backgrounds or
+                  upload your own images to create a visually appealing and
+                  personalized workspace.{" "}
+                </li>
+                <li>
+                  Collaboration and Sharing: Collaborate with team members by
+                  sharing boards. Invite others to join your board, assign
+                  tasks, and track progress together. This fosters better
+                  communication and teamwork.{" "}
+                </li>
+                <li>
+                  Task Details and Attachments: Add detailed descriptions, due
+                  dates, labels, and attachments to each card. Keep all the
+                  relevant information in one place for easy reference and
+                  organization.{" "}
+                </li>
+                <li>
+                  Notifications and Reminders: Stay updated with real-time
+                  notifications for changes, updates, and due dates. Set
+                  reminders to ensure you never miss an important deadline.
+                </li>
+                <li>
+                  Responsive Design: The Kanban App is designed to be
+                  responsive, allowing you to access and manage your tasks from
+                  any device, including desktops, laptops, tablets, and mobile
+                  phones.
+                </li>
+              </ol>
+            </div>
+            <img className="body_img" src={todoimg} alt="todo img" />
+          </div>
+          <div className="body" style={{ flexWrap: "wrap-reverse" }}>
+            <img className="body_img" src={checkListimg} alt="todo img" />
+            <div className="body_text">
+              <h2>Benefits</h2>
+              <br />
+              <ul>
+                <li>
+                  {" "}
+                  Simplify task management: The Kanban App simplifies task
+                  management by providing a visual representation of your
+                  workflow. It helps you prioritize tasks, identify bottlenecks,
+                  and ensure that nothing falls through the cracks.{" "}
+                </li>
+                <li>
+                  Enhance collaboration: By allowing team members to collaborate
+                  on boards, the app promotes seamless communication,
+                  coordination, and teamwork. Everyone can stay informed about
+                  project progress and contribute to its success.{" "}
+                </li>
+                <li>
+                  Improve productivity: With its intuitive interface and
+                  drag-and-drop functionality, the Kanban App streamlines task
+                  management, enabling you to focus on completing tasks rather
+                  than managing them. This enhances productivity and efficiency.
+                </li>
+                <li>
+                  Stay organized: The app's structured organization system helps
+                  you keep track of tasks, deadlines, and progress. You can
+                  easily visualize your workflow, identify tasks that require
+                  attention, and stay on top of your projects.
+                </li>
+                <li>
+                  Personalize your workspace: The ability to customize
+                  backgrounds and tailor the app to your preferences adds a
+                  personal touch to your workspace, making it more engaging and
+                  enjoyable to use.
+                </li>
+              </ul>
+              <br />
+              The Kanban App is a powerful tool for individuals and teams
+              seeking to enhance their task management and collaboration.
+              Whether you're organizing personal projects, managing team tasks,
+              or tracking progress on a complex project, this app offers a
+              user-friendly and versatile solution.
+            </div>
+          </div>
+          <div className="top">
+            <button
+              className="start"
+              style={{ margin: "auto" }}
+              onClick={() => setVisible(false)}
+            >
+              Get Started
+            </button>
+          </div>
         </div>
       ) : (
         <div className="app">
