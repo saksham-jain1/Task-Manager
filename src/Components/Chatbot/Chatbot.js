@@ -5,14 +5,9 @@ import Lottie from "lottie-react";
 import "./Chatbot.css";
 import { X } from "react-feather";
 
-const API_KEY = "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";
-const systemMessage = {
-  role: "system",
-  content:
-    "Act like you are an assistant of a hospitality site named Namaste Stays and reply as per the role in a sweet and polite manner, and sometimes try to be funny.",
-};
+const API_KEY = "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";
 
-const Chatbot = () => {
+const Chatbot = ({ boards }) => {
   const [visible, setVisible] = useState(false);
   const [messages, setMessages] = useState([
     {
@@ -23,10 +18,26 @@ const Chatbot = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [message, setMessage] = useState("");
 
+  let systemMessage = {
+    role: "system",
+    content:
+      "Act like you are an chatbot on the online kanban board website and this is the kanban board details and you also try to return data in proper format and dont return empty data" +
+      JSON.stringify(boards),
+  };
+
   useEffect(() => {
     const chats = document.getElementById("chatBox");
     if (chats) chats.scrollTop = chats.scrollHeight + 50;
   }, [messages]);
+
+  useEffect(() => {
+    systemMessage = {
+      role: "system",
+      content:
+        "Act like you are an chatbot on the online kanban board website and this is the kanban board details and you also try to return data in proper format and dont return empty data" +
+        JSON.stringify(boards),
+    };
+  }, [boards]);
 
   const handleSend = async () => {
     if (!message) return;
@@ -76,7 +87,6 @@ const Chatbot = () => {
         setIsTyping(false);
       })
       .catch((error) => {
-        console.log(error.message);
         setIsTyping(false);
         setMessages([
           ...chatMessages,
@@ -114,7 +124,8 @@ const Chatbot = () => {
               {messages.map((item, i) => {
                 return (
                   <div key={i} className={`message ${item.role}`}>
-                    {item.role ==="error" ? <span>&#9888;&nbsp;</span> : "" }{item.content}
+                    {item.role === "error" ? <span>&#9888;&nbsp;</span> : ""}
+                    {item.content}
                   </div>
                 );
               })}

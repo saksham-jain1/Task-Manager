@@ -6,6 +6,11 @@ import Editable from "./Components/Editable/Editable";
 import Chatbot from "./Components/Chatbot/Chatbot";
 import todoimg from "./resources/todo.gif";
 import checkListimg from "./resources/checklist.gif";
+import img1 from "./resources/Trello-board-1024x512.png";
+import img2 from "./resources/OIG (1).jpeg";
+import img3 from "./resources/OIG (2).jpeg";
+import img4 from "./resources/OIG.jpeg";
+import img5 from "./resources/OIG.rW_ApBw6DEW7c.jpeg";
 
 function App() {
   const [boards, setBoards] = useState(
@@ -112,23 +117,20 @@ function App() {
         <div className="index">
           <h1>About the Kanban App</h1>
           <div className="top">
-            <button
-              className="start"
-              style={{ marginLeft: "auto", marginRight: "40px" }}
-              onClick={() => setVisible(false)}
-            >
+            <img src={img1} alt="" />
+            <button className="start" onClick={() => setVisible(false)}>
               Get Started
             </button>
           </div>
+          The Kanban App is a Trello clonedesigned to help individuals and teams
+          manage their tasks and projects more efficiently. Inspired by the
+          popular Kanban method, this app provides an intuitive and visual
+          interface that allows users to organize their work into boards, lists,
+          and cards.
+          <br />
+          <br />
           <div className="body">
             <div className="body_text">
-              The Kanban App is a Trello clonedesigned to help individuals and
-              teams manage their tasks and projects more efficiently. Inspired
-              by the popular Kanban method, this app provides an intuitive and
-              visual interface that allows users to organize their work into
-              boards, lists, and cards.
-              <br />
-              <br />
               <h2>Key Features:</h2>
               <br />
               <ol type="1">
@@ -143,25 +145,25 @@ function App() {
                   Drag-and-Drop Interface: Easily move cards between lists and
                   boards using a simple drag-and-drop interface. This feature
                   allows you to quickly update the status of your tasks and keep
-                  track of their progress.{" "}
+                  track of their progress.
                 </li>
                 <li>
                   Customizable Boards: Personalize your boards with custom
                   backgrounds. Choose from a selection of preset backgrounds or
                   upload your own images to create a visually appealing and
-                  personalized workspace.{" "}
+                  personalized workspace.
                 </li>
                 <li>
                   Collaboration and Sharing: Collaborate with team members by
                   sharing boards. Invite others to join your board, assign
                   tasks, and track progress together. This fosters better
-                  communication and teamwork.{" "}
+                  communication and teamwork.
                 </li>
                 <li>
                   Task Details and Attachments: Add detailed descriptions, due
                   dates, labels, and attachments to each card. Keep all the
                   relevant information in one place for easy reference and
-                  organization.{" "}
+                  organization.
                 </li>
                 <li>
                   Notifications and Reminders: Stay updated with real-time
@@ -185,17 +187,16 @@ function App() {
               <br />
               <ul>
                 <li>
-                  {" "}
                   Simplify task management: The Kanban App simplifies task
                   management by providing a visual representation of your
                   workflow. It helps you prioritize tasks, identify bottlenecks,
-                  and ensure that nothing falls through the cracks.{" "}
+                  and ensure that nothing falls through the cracks.
                 </li>
                 <li>
                   Enhance collaboration: By allowing team members to collaborate
                   on boards, the app promotes seamless communication,
                   coordination, and teamwork. Everyone can stay informed about
-                  project progress and contribute to its success.{" "}
+                  project progress and contribute to its success.
                 </li>
                 <li>
                   Improve productivity: With its intuitive interface and
@@ -227,11 +228,17 @@ function App() {
           <div className="top">
             <button
               className="start"
-              style={{ margin: "auto" }}
+              style={{ marginTop: "50px" }}
               onClick={() => setVisible(false)}
             >
               Get Started
             </button>
+          </div>
+          <div className="images">
+            <img src={img2} alt="" />
+            <img src={img3} alt="" />
+            <img src={img4} alt="" />
+            <img src={img5} alt="" />
           </div>
         </div>
       ) : (
