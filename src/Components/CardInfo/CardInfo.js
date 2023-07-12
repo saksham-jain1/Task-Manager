@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Calendar, CheckSquare, List, Tag, Trash, Type } from "react-feather";
+import {
+  Calendar,
+  CheckSquare,
+  List,
+  Tag,
+  Trash,
+  Type,
+  X,
+} from "react-feather";
 import Chip from "../Chip/Chip";
 import Editable from "../Editable/Editable";
 import Modal from "../Modal/Modal";
 import "./CardInfo.css";
 
-const CardInfo = ({ onClose, card,updateCard,boardId,completed }) => {
+const CardInfo = ({ onClose, card, updateCard, boardId, completed }) => {
   const [activeColor, setActiveColor] = useState("");
   const colors = [
     "#a8193d",
@@ -16,55 +24,57 @@ const CardInfo = ({ onClose, card,updateCard,boardId,completed }) => {
     "#240959",
   ];
 
-  const [values, setValues] = useState({...card});
+  const [values, setValues] = useState({ ...card });
 
-  const addLabel = (value,color) => {
+  const addLabel = (value, color) => {
     const label = {
       id: Date.now() + Math.random(),
       text: value,
       color,
     };
-    setValues({...values,labels:[...values.labels,label]});
+    setValues({ ...values, labels: [...values.labels, label] });
     setActiveColor("");
-  }
+  };
 
-  const removeLabel = (id)=>{
-    const labels = values.labels?.filter((item)=>item.id!==id)
+  const removeLabel = (id) => {
+    const labels = values.labels?.filter((item) => item.id !== id);
 
-    setValues({...values,labels:labels});
-  }
+    setValues({ ...values, labels: labels });
+  };
 
   const addTask = (value) => {
     const task = {
-      id:Date.now() + Math.random(),
-      text:value,
-      completed:false,
-    }
-    setValues({...values,tasks:[...values.tasks,task]});
-  }
+      id: Date.now() + Math.random(),
+      text: value,
+      completed: false,
+    };
+    setValues({ ...values, tasks: [...values.tasks, task] });
+  };
 
   const removeTask = (id) => {
-    const tempTasks = values.tasks?.filter((item)=> item.id !== id);
-    setValues({...values,tasks:tempTasks})
-  }
+    const tempTasks = values.tasks?.filter((item) => item.id !== id);
+    setValues({ ...values, tasks: tempTasks });
+  };
 
-  const updateTask = (id,status) => {
-    const index = values.tasks?.findIndex((item) => item.id ===id)
-    if(index<0) return;
+  const updateTask = (id, status) => {
+    const index = values.tasks?.findIndex((item) => item.id === id);
+    if (index < 0) return;
 
     const tempTasks = [...values.tasks];
     tempTasks[index].completed = status;
-    setValues({...values,task:tempTasks});
-  }
+    setValues({ ...values, task: tempTasks });
+  };
 
   useEffect(() => {
-    updateCard(card.id,boardId,values);
-  }, [values])
-  
+    updateCard(card.id, boardId, values);
+  }, [values]);
 
   return (
     <Modal onClose={() => onClose()}>
       <div className="cardinfo">
+        <span className="cardinfo_close_btn" onClick={() => onClose()}>
+          <X />
+        </span>
         <div className="cardinfo_box">
           <div className="cardinfo_box_title">
             <Type />
@@ -138,11 +148,11 @@ const CardInfo = ({ onClose, card,updateCard,boardId,completed }) => {
               />
             ))}
             <input
-            type="color"
-            value={activeColor}
-            onChange={(e) => {
-              setActiveColor(e.target.value);
-            }}
+              type="color"
+              value={activeColor}
+              onChange={(e) => {
+                setActiveColor(e.target.value);
+              }}
             />
           </div>
           <div className="cardinfo_box_body">
@@ -174,7 +184,9 @@ const CardInfo = ({ onClose, card,updateCard,boardId,completed }) => {
               />
             </div>
             <div>
-              {(values?.tasks?.length>0 ? ((completed * 100) / values?.tasks?.length) + "%" : "")}
+              {values?.tasks?.length > 0
+                ? (completed * 100) / values?.tasks?.length + "%"
+                : ""}
             </div>
           </div>
           <div className="cardinfo_box_list">

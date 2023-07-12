@@ -1,0 +1,125 @@
+.chatbot {
+  position: fixed;
+  bottom: 210px;
+  right: 210px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.chatbot .chatbot-icon {
+  position: absolute;
+  height: 200px;
+  width: 240px;
+}
+
+.chatbot .chatbot-icon .icon-button {
+  height: 100%;
+  width: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.chatbot .chatbox-overlay {
+  position: fixed;
+  inset: 0px;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+  margin-right: 2px;
+}
+
+.chatbot .chatbox-content {
+  border-radius: 3xl;
+  height: 500px;
+  width: 300px;
+  background: rgb(213, 213, 213);
+  position: absolute;
+  right: 12px;
+  bottom: 100px;
+  padding: 10px 20px;
+  border: 1px solid black;
+}
+
+.chatbot .chatbox-content .close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: red;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.chatbot .chatbox-content .chatbox-header {
+  text-align: center;
+}
+
+.chatbot .chatbox-content .messages {
+  background: #fafafa;
+  height: 80%;
+  overflow: auto;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.chatbot .chatbox-content .messages .message {
+  border-radius: 30px;
+  max-width: 70%;
+  width: max-content;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.chatbot .chatbox-content .messages .assistant {
+  background-color: rgb(5, 135, 135);
+  color: white;
+  margin-left: auto;
+}
+
+.chatbot .chatbox-content .messages .user {
+  background-color: rgb(61, 158, 255);
+  color: white;
+}
+
+.chatbot .chatbox-content .messages .error {
+  background-color: rgb(249, 88, 88);
+  color: white;
+  margin: auto;
+  width: 90%;
+  text-align: center;
+}
+
+.chatbot .chatbox-content .input-container {
+  padding: 10px 0px;
+  width: 100%;
+}
+
+.chatbot .chatbox-content .input-container input[type="text"] {
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px;
+  width: 70%;
+}
+
+.chatbot .chatbox-content .input-container button {
+  color: white;
+  background-color: rgb(24, 187, 252);
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.chatbot .chatbox-content .input-container button:hover {
+  background-color: rgb(1, 169, 235);
+}
+
+.chatbot .chatbox-content .typing-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+}

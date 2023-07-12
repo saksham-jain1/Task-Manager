@@ -3,9 +3,12 @@ import "./App.css";
 import Board from "./Components/Board/Board";
 import Drawer from "./Components/Drawer/Drawer";
 import Editable from "./Components/Editable/Editable";
+import Chatbot from "./Components/Chatbot/Chatbot";
 
 function App() {
-  const [boards, setBoards] = useState(JSON.parse(localStorage.getItem('task-manager'))|| []);
+  const [boards, setBoards] = useState(
+    JSON.parse(localStorage.getItem("task-manager")) || []
+  );
   const [target, setTarget] = useState({
     cid: "",
     bid: "",
@@ -84,22 +87,21 @@ function App() {
     setBoards(tempBoards);
   };
 
-  const updateCard = (cid,bid,card) => {
-    const bIndex = boards.findIndex((item)=>item.id===bid);
-    if(bIndex<0) return;
+  const updateCard = (cid, bid, card) => {
+    const bIndex = boards.findIndex((item) => item.id === bid);
+    if (bIndex < 0) return;
 
-    const cIndex = boards[bIndex].cards.findIndex((item)=>item.id===cid);
-    if(cIndex<0) return;
+    const cIndex = boards[bIndex].cards.findIndex((item) => item.id === cid);
+    if (cIndex < 0) return;
 
     const tempBoards = [...boards];
-    tempBoards[bIndex].cards[cIndex]=card;
+    tempBoards[bIndex].cards[cIndex] = card;
     setBoards(tempBoards);
-  }
+  };
 
   useEffect(() => {
-    localStorage.setItem('task-manager',JSON.stringify(boards));
+    localStorage.setItem("task-manager", JSON.stringify(boards));
   }, [boards]);
-  
 
   return (
     <div className="app">
@@ -137,6 +139,7 @@ function App() {
             />
           </div>
         </div>
+        <Chatbot boards={boards} />
       </div>
     </div>
   );
