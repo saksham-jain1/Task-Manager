@@ -14,14 +14,15 @@ import img5 from "./resources/OIG.rW_ApBw6DEW7c.jpeg";
 
 function App() {
   const [boards, setBoards] = useState(
-    JSON.parse(localStorage.getItem("task-manager")) || []
+    JSON.parse(localStorage.getItem("task-manager")).boards || []
   );
   const [target, setTarget] = useState({
     cid: "",
     bid: "",
   });
   const [imgUrl, setImgUrl] = useState(
-    'url("https://source.unsplash.com/1600x900/?office")'
+    JSON.parse(localStorage.getItem("task-manager"))?.imgUrl ||
+      'url("https://source.unsplash.com/1600x900/?office")'
   );
   const [visible, setVisible] = useState(true);
 
@@ -108,8 +109,8 @@ function App() {
   };
 
   useEffect(() => {
-    localStorage.setItem("task-manager", JSON.stringify(boards));
-  }, [boards]);
+    localStorage.setItem("task-manager", JSON.stringify({ imgUrl, boards }));
+  }, [boards, imgUrl]);
 
   return (
     <>
