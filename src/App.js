@@ -117,7 +117,7 @@ function App() {
         <div className="index">
           <h1>About the Kanban App</h1>
           <div className="top">
-            <img src={img1} alt="" />
+            <img src={img1} alt="" width="100%" />
             <button className="start" onClick={() => setVisible(false)}>
               Get Started
             </button>

@@ -93,8 +93,10 @@ h1 {
 }
 .top {
   width: 100%;
+  max-width: 98vw;
   position: relative;
-  &>img{
+  overflow-x: auto;
+  & > img {
     width: 100%;
   }
 }
@@ -102,7 +104,7 @@ h1 {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   padding: 10px 25px;
   outline: none;
   border-radius: 10px;
@@ -126,13 +128,13 @@ img {
   box-shadow: 0px 0px 10px black;
 }
 
-.images{
+.images {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   margin-top: 120px;
   justify-content: space-evenly;
-  &>img{
+  & > img {
     min-width: 300px;
     width: 45%;
     max-width: 400px;
