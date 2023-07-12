@@ -36,6 +36,7 @@
   display: flex;
   align-items: center;
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 .board_top_title span {

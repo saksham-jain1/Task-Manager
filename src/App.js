@@ -16,6 +16,7 @@ function App() {
   const [imgUrl, setImgUrl] = useState(
     'url("https://source.unsplash.com/1600x900/?office")'
   );
+  const [visible, setVisible] = useState(true);
 
   const addCard = async (title, bid) => {
     const card = {
@@ -29,12 +30,11 @@ function App() {
     const index = boards.findIndex((item) => item.id === bid);
     if (index < 0) return;
     const tempBoards = [...boards];
-    tempBoards[index].cards.push({ ...card});
+    tempBoards[index].cards.push({ ...card });
     setBoards(tempBoards);
   };
 
   const removeCard = (cid, bid) => {
-    console.log(bid,cid)
     const bIndex = boards.findIndex((item) => item.id === bid);
     if (bIndex < 0) return;
     const cIndex = boards[bIndex].cards.findIndex((item) => item.id === cid);
@@ -105,44 +105,52 @@ function App() {
   }, [boards]);
 
   return (
-    <div className="app">
-      <div className="app_navbar">
-        <h2>Kanban</h2>
-        <Drawer setImgUrl={setImgUrl} />
-      </div>
-      <div
-        className="app_outer"
-        style={{
-          backgroundImage: imgUrl,
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
-      >
-        <div className="app_boards">
-          {boards.map((item) => (
-            <Board
-              board={item}
-              key={item.id}
-              removeBoard={removeBoard}
-              addCard={addCard}
-              removeCard={removeCard}
-              handleDragEnd={handleDragEnd}
-              handleDragEnter={handleDragEnter}
-              updateCard={updateCard}
-            />
-          ))}
-          <div className="app_boards_board">
-            <Editable
-              displayClass="app_boards_board_add"
-              placeholder="Enter board title"
-              onSubmit={(value) => addBoard(value)}
-            />
+    <>
+      {visible ? (
+        <div className="index">
+          <button class="start" onClick={() => setVisible(false)}>Get Started</button>
+        </div>
+      ) : (
+        <div className="app">
+          <div className="app_navbar">
+            <h2>Kanban</h2>
+            <Drawer setImgUrl={setImgUrl} />
+          </div>
+          <div
+            className="app_outer"
+            style={{
+              backgroundImage: imgUrl,
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+            }}
+          >
+            <div className="app_boards">
+              {boards.map((item) => (
+                <Board
+                  board={item}
+                  key={item.id}
+                  removeBoard={removeBoard}
+                  addCard={addCard}
+                  removeCard={removeCard}
+                  handleDragEnd={handleDragEnd}
+                  handleDragEnter={handleDragEnter}
+                  updateCard={updateCard}
+                />
+              ))}
+              <div className="app_boards_board">
+                <Editable
+                  displayClass="app_boards_board_add"
+                  placeholder="Enter board title"
+                  onSubmit={(value) => addBoard(value)}
+                />
+              </div>
+            </div>
+            <Chatbot boards={boards} />
           </div>
         </div>
-        <Chatbot boards={boards} />
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 

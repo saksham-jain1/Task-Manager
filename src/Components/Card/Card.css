@@ -43,6 +43,7 @@
 
 .card_title{
     font-weight: bold;
+    text-transform: capitalize;
 }
 .card_footer{
     display: flex;

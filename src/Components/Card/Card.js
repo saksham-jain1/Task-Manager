@@ -21,7 +21,7 @@ const Card = ({
   const [showDropdown, setShowDropdown] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const completed = card?.tasks?.filter((item) => item.completed)?.length;
-  const date=new Date();
+  const date = new Date();
   return (
     <>
       {showModal && (
@@ -60,7 +60,7 @@ const Card = ({
                 onClose={() => setShowDropdown(false)}
               >
                 <div className="card_dropdown">
-                  <p onClick={() => removeCard(card.id,boardId)}>
+                  <p onClick={() => removeCard(card.id, boardId)}>
                     Delete Card
                   </p>
                 </div>
@@ -73,7 +73,12 @@ const Card = ({
           {card?.date && (
             <p>
               <Clock />
-              {card?.date}
+              {new Date(card?.date)?.toLocaleDateString("en-IN", {
+                weekday: "short",
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
             </p>
           )}
           {card?.tasks?.length > 0 && (
