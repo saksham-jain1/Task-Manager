@@ -14,7 +14,7 @@ import img5 from "./resources/OIG.rW_ApBw6DEW7c.jpeg";
 
 function App() {
   const [boards, setBoards] = useState(
-    JSON.parse(localStorage.getItem("task-manager")).boards || []
+    JSON.parse(localStorage.getItem("task-manager"))?.boards || []
   );
   const [target, setTarget] = useState({
     cid: "",
