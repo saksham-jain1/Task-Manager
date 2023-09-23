@@ -77,6 +77,7 @@ const Chatbot = ({ boards }) => {
         return data.json();
       })
       .then((data) => {
+        console.log(data);
         setMessages([
           ...chatMessages,
           {
@@ -87,6 +88,7 @@ const Chatbot = ({ boards }) => {
         setIsTyping(false);
       })
       .catch((error) => {
+        console.log(error);
         setIsTyping(false);
         setMessages([
           ...chatMessages,
