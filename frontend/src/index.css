@@ -8,3 +8,22 @@ p{
     font-size: 16px;
     line-height: 28px;
 }
+
+.button_div {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button_div>input{
+    padding: 10px 20px;
+    flex: 1;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    background: rgba(86, 241, 86, 0.529);
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}

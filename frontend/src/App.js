@@ -5,19 +5,20 @@ import "./App.css";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 import PageNotFound from "./Pages/ErrorPage/PageNotFound";
 import HomePage from "./Pages/HomePage/HomePage";
+import { useCallback } from "react";
 
 function App() {
   const { v4: uuidv4 } = require("uuid");
 
   const [pages, setPages] = useState([]);
   const [activeTab, setActiveTab] = useState("login");
-  const [data, setData] = useState({ email: "", password: "" });
+  const [data, setData] = useState({});
   const [user, setUser] = useState("");
-  const [online, setOnline] = useState(window.navigator.onLine);
+  // const [online, setOnline] = useState(window.navigator.onLine);
 
-  setInterval(() => {
-    setOnline(window.navigator.onLine);
-  }, 5000);
+  // setInterval(() => {
+  //   setOnline(window.navigator.onLine);
+  // }, 5000);
 
   const navigate = useNavigate();
   //  useEffect(() => {
@@ -38,6 +39,13 @@ function App() {
   //   }
   // }, 2000);
   const { id } = useParams();
+
+  const handleChange = (e) => {
+    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  useEffect(() => {
+    console.log("Updated data:", data);
+  }, [data]);
   const login = async () => {
     if (data.email && data.password) {
       try {
@@ -49,7 +57,6 @@ function App() {
             if (item.id == id || item._id == id) return item;
           });
         }
-        console.log(check.length);
         if (!id || check.length)
           navigate(`/pages/${user_data.data.pages[0].id}`);
         else {
@@ -101,84 +108,6 @@ function App() {
     }
   };
 
-  const Login = () => {
-    return (
-      <>
-        <label htmlFor="email">Email </label>
-        <input
-          type="email"
-          name="email"
-          value={data.email}
-          onChange={(e) => setData({ ...data, email: e.target.value })}
-          id="email"
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          value={data.password}
-          onChange={(e) => setData({ ...data, password: e.target.value })}
-          id="password"
-        />
-        <br />
-        <input
-          type="button"
-          value="Login"
-          onClick={() => login()}
-          id="submit"
-        />
-        <input type="reset" value="Reset" id="reset" />
-      </>
-    );
-  };
-
-  const SignUp = () => {
-    return (
-      <>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          value={data.name}
-          name="username"
-          id="username"
-          onChange={(e) => setData({ ...data, name: e.target.value })}
-        />
-        <label htmlFor="email">Email </label>
-        <input
-          type="email"
-          value={data.email}
-          name="email"
-          id="email"
-          onChange={(e) => setData({ ...data, email: e.target.value })}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          value={data.password}
-          name="password"
-          id="password"
-          onChange={(e) => setData({ ...data, password: e.target.value })}
-        />
-        <label htmlFor="cpassword">Confirm Password</label>
-        <input
-          type="password"
-          value={data.cpassword}
-          name="cpassword"
-          id="cpassword"
-          onChange={(e) => setData({ ...data, cpassword: e.target.value })}
-        />
-        <br />
-        <input
-          type="button"
-          value="Sign Up"
-          onClick={(e) => signup(e)}
-          id="submit"
-        />
-        <input type="reset" value="Reset" id="reset" />
-      </>
-    );
-  };
-
   const Header = () => {
     return (
       <div className="header">
@@ -192,7 +121,7 @@ function App() {
           className={activeTab !== "home" ? "active" : ""}
           onClick={() => {
             setActiveTab("login");
-            setData({ email: "", password: "" });
+            setData({});
           }}
         >
           Login/Sign-Up
@@ -215,7 +144,7 @@ function App() {
                     className={activeTab === "login" ? "active" : ""}
                     onClick={() => {
                       setActiveTab("login");
-                      setData({ email: "", password: "" });
+                      setData({});
                     }}
                   >
                     Login
@@ -224,18 +153,99 @@ function App() {
                     className={activeTab === "signup" ? "active" : ""}
                     onClick={() => {
                       setActiveTab("signup");
-                      setData({
-                        name: "",
-                        email: "",
-                        password: "",
-                        cpassword: "",
-                      });
+                      setData({});
                     }}
                   >
                     SignUp
                   </div>
                 </div>
-                <div>{activeTab === "login" ? <Login /> : <SignUp />}</div>
+                <div>
+                  {activeTab === "login" ? (
+                    <>
+                      <label htmlFor="email">Email </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={data?.email || ""}
+                        onChange={(e) => handleChange(e)}
+                        id="email"
+                      />
+                      <label htmlFor="password">Password</label>
+                      <input
+                        type="password"
+                        name="password"
+                        value={data?.password}
+                        onChange={(e) => handleChange(e)}
+                        id="password"
+                      />
+                      <br />
+                      <div className="button_div">
+                        <input
+                          type="button"
+                          value="Login"
+                          onClick={() => login()}
+                          id="submit"
+                        />
+                        <input
+                          type="reset"
+                          value="Reset"
+                          id="reset"
+                          onClick={() => setData({})}
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <label htmlFor="username">Username</label>
+                      <input
+                        type="text"
+                        value={data?.username}
+                        name="username"
+                        id="username"
+                        onChange={(e) => handleChange(e)}
+                      />
+                      <label htmlFor="email">Email </label>
+                      <input
+                        type="email"
+                        value={data?.email}
+                        name="email"
+                        id="email"
+                        onChange={(e) => handleChange(e)}
+                      />
+                      <label htmlFor="password">Password</label>
+                      <input
+                        type="password"
+                        value={data?.password}
+                        name="password"
+                        id="password"
+                        onChange={(e) => handleChange(e)}
+                      />
+                      <label htmlFor="cpassword">Confirm Password</label>
+                      <input
+                        type="password"
+                        value={data?.cpassword}
+                        name="cpassword"
+                        id="cpassword"
+                        onChange={(e) => handleChange(e)}
+                      />
+                      <br />
+                      <div className="button_div">
+                        <input
+                          type="button"
+                          value="Sign Up"
+                          onClick={(e) => signup(e)}
+                          id="submit"
+                        />
+                        <input
+                          type="reset"
+                          value="Reset"
+                          id="reset"
+                          onClick={() => setData({})}
+                        />
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
             </>
           ) : (
@@ -243,7 +253,7 @@ function App() {
           )}
         </>
       )}
-      {user ? (
+      {user && (
         <Routes>
           <Route
             path="/"
@@ -252,14 +262,12 @@ function App() {
               <HomePage
                 pages={pages}
                 UserId={user?._id}
-                online={online}
+                // online={online}
                 setPages={setPages}
               />
             }
           />
         </Routes>
-      ) : (
-        <div>Loading.. </div>
       )}
     </div>
   );
